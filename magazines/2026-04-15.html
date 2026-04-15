@@ -1,552 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Morning Edition — 2026-04-15</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,700&family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
-  color: #f5f0e8;
-  overflow-x: hidden;
-}
-
-/* ── MASTHEAD ── */
-.masthead {
-  background: #0a0a0a;
-  border-bottom: 3px solid #e8c547;
-  padding: 3rem 4rem 2.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 2rem;
-}
-.masthead-left {}
-.edition-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  color: #e8c547;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-.masthead-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(3rem, 8vw, 7rem);
-  font-weight: 900;
-  line-height: 0.9;
-  color: #f5f0e8;
-  letter-spacing: -0.03em;
-}
-.masthead-title em {
-  font-style: italic;
-  color: #e8c547;
-}
-.masthead-right {
-  text-align: right;
-}
-.masthead-date {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  color: #888;
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-.masthead-weekday {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 300;
-  font-style: italic;
-  color: #f5f0e8;
-}
-.sources-line {
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: #555;
-  text-transform: uppercase;
-  margin-top: 0.5rem;
-}
-
-/* ── TABLE OF CONTENTS ── */
-.toc {
-  background: #111;
-  border-bottom: 1px solid #222;
-  padding: 2rem 4rem;
-}
-.toc-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  color: #555;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-.toc-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 0.75rem;
-}
-.toc-item {
-  display: flex;
-  gap: 0.75rem;
-  align-items: baseline;
-  text-decoration: none;
-  padding: 0.5rem;
-  border-radius: 4px;
-  transition: background 0.15s;
-}
-.toc-item:hover { background: #1a1a1a; }
-.toc-n {
-  font-family: 'Fraunces', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #e8c547;
-  flex-shrink: 0;
-  width: 2rem;
-}
-.toc-text {
-  font-size: 0.82rem;
-  color: #aaa;
-  line-height: 1.4;
-}
-.toc-item.flagged .toc-text { color: #f5c842; }
-.toc-item.flagged .toc-n { color: #f5c842; }
-
-/* ── SPREADS ── */
-.spread {
-  min-height: 100vh;
-  position: relative;
-  overflow: hidden;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.spread-inner {
-  padding: clamp(3rem, 8vw, 7rem) clamp(2rem, 6vw, 6rem);
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-}
-.eyebrow {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-}
-.display-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  margin-bottom: 2rem;
-  max-width: 900px;
-}
-.read-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  text-transform: uppercase;
-  border-bottom: 2px solid currentColor;
-  padding-bottom: 2px;
-  transition: opacity 0.2s;
-}
-.read-link:hover { opacity: 0.7; }
-
-/* ── FLAG BADGE ── */
-.flag-badge {
-  display: inline-block;
-  background: #f5c842;
-  color: #1a1000;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 0.3em 0.8em;
-  border-radius: 3px;
-  margin-bottom: 1rem;
-}
-
-/* ── GHOST NUMERAL ── */
-.ghost-numeral {
-  position: absolute;
-  font-family: 'Fraunces', serif;
-  font-size: clamp(18rem, 40vw, 40rem);
-  font-weight: 900;
-  line-height: 0.8;
-  right: -0.05em;
-  bottom: -0.1em;
-  user-select: none;
-  z-index: 1;
-}
-
-/* ── HERO ── */
-.layout-hero .spread-inner { padding-top: clamp(5rem, 12vh, 10rem); padding-bottom: clamp(5rem, 12vh, 10rem); }
-.hero-title { font-size: clamp(2.5rem, 6.5vw, 6rem); }
-
-/* ── MIDNIGHT ── */
-.two-col {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 4rem;
-  align-items: center;
-  max-width: 1200px;
-}
-.left-col {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: flex-start;
-}
-.big-num {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(5rem, 12vw, 10rem);
-  font-weight: 900;
-  line-height: 1;
-  display: block;
-}
-.src-pill {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  border: 1.5px solid;
-  padding: 0.3em 0.8em;
-  border-radius: 2px;
-  text-transform: uppercase;
-}
-
-/* ── ALERT ── */
-.alert-stamp {
-  position: absolute;
-  top: 3rem;
-  right: 3rem;
-  font-size: 0.7rem;
-  font-weight: 900;
-  letter-spacing: 0.3em;
-  border: 3px solid;
-  padding: 0.5em 1em;
-  transform: rotate(6deg);
-  text-transform: uppercase;
-  z-index: 3;
-}
-.alert-title { font-size: clamp(2.5rem, 7vw, 6.5rem); color: #fff5f5; }
-
-/* ── TERMINAL ── */
-.layout-terminal { font-family: 'JetBrains Mono', monospace !important; }
-.terminal-inner { padding-top: clamp(4rem, 10vh, 8rem); }
-.terminal-header { font-size: 0.8rem; margin-bottom: 2rem; opacity: 0.6; }
-.terminal-eye { font-family: 'JetBrains Mono', monospace !important; font-size: 0.75rem; margin-bottom: 1.5rem; }.terminal-title {
-  font-family: 'JetBrains Mono', monospace !important;
-  font-size: clamp(1.5rem, 4vw, 3.2rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-.terminal-link { font-family: 'JetBrains Mono', monospace !important; font-size: 0.7rem; word-break: break-all; }
-
-/* ── ACADEMIC ── */
-.layout-academic { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a882' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-.academic-inner {}
-.academic-top { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
-.roman-num {
-  font-family: 'Fraunces', serif;
-  font-size: 1.2rem;
-  font-weight: 300;
-  font-style: italic;
-}
-.drop-cap {
-  float: left;
-  font-family: 'Fraunces', serif;
-  font-size: clamp(5rem, 12vw, 9rem);
-  font-weight: 900;
-  line-height: 0.75;
-  margin-right: 0.1em;
-  margin-top: 0.1em;
-}
-.academic-title { font-size: clamp(2rem, 4.5vw, 4rem); line-height: 1.15; }
-
-/* ── BIG STAT ── */
-.stat-inner {
-  display: flex;
-  gap: 4rem;
-  align-items: center;
-}
-.stat-num {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(8rem, 20vw, 18rem);
-  font-weight: 900;
-  line-height: 0.85;
-  flex-shrink: 0;
-}
-.stat-right { flex: 1; }
-.stat-title { font-size: clamp(1.8rem, 4vw, 3.5rem); }
-
-/* ── FOREST ── */
-.forest-num {
-  position: absolute;
-  font-family: 'Fraunces', serif;
-  font-size: clamp(15rem, 35vw, 32rem);
-  font-weight: 900;
-  left: -0.05em;
-  bottom: -0.1em;
-  line-height: 0.8;
-  user-select: none;
-  z-index: 1;
-}
-.forest-title { font-size: clamp(2rem, 5vw, 4.5rem); }
-
-/* ── MANIFESTO ── */
-.manifesto-inner { position: relative; }
-.manifesto-accent {
-  width: 80px;
-  height: 6px;
-  margin-bottom: 3rem;
-}
-.manifesto-eye { font-size: 0.65rem; }
-.manifesto-title {
-  font-size: clamp(2.5rem, 7vw, 6rem);
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-}
-.manifesto-num {
-  position: absolute;
-  top: 50%;
-  right: -0.05em;
-  transform: translateY(-50%);
-  font-family: 'Fraunces', serif;
-  font-size: clamp(12rem, 30vw, 28rem);
-  font-weight: 900;
-  line-height: 0.8;
-  user-select: none;
-  z-index: 0;
-  pointer-events: none;
-}
-.manifesto-inner > *:not(.manifesto-num) { position: relative; z-index: 2; }
-
-/* ── PURPLE ── */
-.purple-inner { position: relative; }
-.purple-pill {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 900;
-  letter-spacing: 0.2em;
-  padding: 0.3em 1em;
-  border-radius: 999px;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-}
-.purple-title { font-size: clamp(2rem, 5vw, 4.5rem); }
-.purple-num {
-  position: absolute;
-  right: -0.05em;
-  bottom: -0.1em;
-  font-family: 'Fraunces', serif;
-  font-size: clamp(14rem, 32vw, 30rem);
-  font-weight: 900;
-  line-height: 0.8;
-  user-select: none;
-}
-
-/* ── FINALE ── */
-.finale-inner { position: relative; }
-.finale-bar {
-  width: 100%;
-  height: 8px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.finale-title { font-size: clamp(2rem, 5.5vw, 5rem); color: #1a0000; }
-.finale-close {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  margin-top: 3rem;
-}
-
-/* ── FOOTER ── */
-.magazine-footer {
-  background: #0a0a0a;
-  border-top: 1px solid #1a1a1a;
-  padding: 3rem 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #333;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-.footer-brand { font-family: 'Fraunces', serif; font-size: 1.2rem; font-style: italic; color: #e8c547; }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .masthead { flex-direction: column; align-items: flex-start; padding: 2rem; }
-  .masthead-right { text-align: left; }
-  .toc { padding: 1.5rem 2rem; }
-  .toc-grid { grid-template-columns: 1fr; }
-  .two-col { grid-template-columns: 1fr; gap: 1.5rem; }
-  .stat-inner { flex-direction: column; gap: 1rem; }
-  .stat-num { font-size: clamp(5rem, 20vw, 8rem); }
-  .alert-stamp { display: none; }
-}
-
-@media print {
-  .spread { page-break-after: always; min-height: auto; padding: 4rem 3rem; }
-  .ghost-numeral, .forest-num, .manifesto-num, .purple-num { display: none; }
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#f5f0e8;overflow-x:hidden}
+.masthead{background:#0a0a0a;border-bottom:3px solid #e8c547;padding:3rem 4rem 2.5rem;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.edition-label{font-size:.7rem;font-weight:700;letter-spacing:.25em;color:#e8c547;text-transform:uppercase;margin-bottom:.5rem}
+.masthead-title{font-family:'Fraunces',serif;font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:.9;color:#f5f0e8;letter-spacing:-.03em}
+.masthead-title em{font-style:italic;color:#e8c547}
+.masthead-right{text-align:right}
+.masthead-date{font-size:.75rem;letter-spacing:.15em;color:#888;text-transform:uppercase;margin-bottom:.4rem}
+.masthead-weekday{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;font-style:italic;color:#f5f0e8}
+.sources-line{font-size:.65rem;letter-spacing:.2em;color:#555;text-transform:uppercase;margin-top:.5rem}
+.toc{background:#111;border-bottom:1px solid #222;padding:2rem 4rem}
+.toc-label{font-size:.65rem;letter-spacing:.25em;color:#555;text-transform:uppercase;margin-bottom:1rem}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem}
+.toc-item{display:flex;gap:.75rem;align-items:baseline;text-decoration:none;padding:.5rem;border-radius:4px;transition:background .15s}
+.toc-item:hover{background:#1a1a1a}
+.toc-n{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#e8c547;flex-shrink:0;width:2rem}
+.toc-text{font-size:.82rem;color:#aaa;line-height:1.4}
+.toc-item.flagged .toc-text{color:#f5c842}.toc-item.flagged .toc-n{color:#f5c842}
+.spread{min-height:100vh;position:relative;overflow:hidden;padding:0;display:flex;flex-direction:column;justify-content:center}
+.spread-inner{padding:clamp(3rem,8vw,7rem) clamp(2rem,6vw,6rem);position:relative;z-index:2;max-width:1200px}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.2rem}
+.display-title{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-bottom:2rem;max-width:900px}
+.read-link{font-size:.85rem;font-weight:700;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;border-bottom:2px solid currentColor;padding-bottom:2px;transition:opacity .2s}
+.read-link:hover{opacity:.7}
+.flag-badge{display:inline-block;background:#f5c842;color:#1a1000;font-size:.6rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;padding:.3em .8em;border-radius:3px;margin-bottom:1rem}
+.ghost-numeral{position:absolute;font-family:'Fraunces',serif;font-size:clamp(18rem,40vw,40rem);font-weight:900;line-height:.8;right:-.05em;bottom:-.1em;user-select:none;z-index:1}
+.hero-title{font-size:clamp(2.5rem,6.5vw,6rem)}
+.two-col{display:grid;grid-template-columns:200px 1fr;gap:4rem;align-items:center;max-width:1200px}
+.left-col{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.big-num{font-family:'Fraunces',serif;font-size:clamp(5rem,12vw,10rem);font-weight:900;line-height:1;display:block}
+.src-pill{font-size:.65rem;font-weight:700;letter-spacing:.2em;border:1.5px solid;padding:.3em .8em;border-radius:2px;text-transform:uppercase}
+.alert-stamp{position:absolute;top:3rem;right:3rem;font-size:.7rem;font-weight:900;letter-spacing:.3em;border:3px solid;padding:.5em 1em;transform:rotate(6deg);text-transform:uppercase;z-index:3}
+.alert-title{font-size:clamp(2.5rem,7vw,6.5rem);color:#fff5f5}
+.layout-terminal{font-family:'JetBrains Mono',monospace!important}
+.terminal-inner{padding-top:clamp(4rem,10vh,8rem)}
+.terminal-header{font-size:.8rem;margin-bottom:2rem;opacity:.6}
+.terminal-eye{font-family:'JetBrains Mono',monospace!important;font-size:.75rem;margin-bottom:1.5rem}
+.terminal-title{font-family:'JetBrains Mono',monospace!important;font-size:clamp(1.5rem,4vw,3.2rem);font-weight:700;letter-spacing:-.01em}
+.terminal-link{font-family:'JetBrains Mono',monospace!important;font-size:.7rem;word-break:break-all}
+.academic-inner{}
+.academic-top{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem}
+.roman-num{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:300;font-style:italic}
+.drop-cap{float:left;font-family:'Fraunces',serif;font-size:clamp(5rem,12vw,9rem);font-weight:900;line-height:.75;margin-right:.1em;margin-top:.1em}
+.academic-title{font-size:clamp(2rem,4.5vw,4rem);line-height:1.15}
+.stat-inner{display:flex;gap:4rem;align-items:center}
+.stat-num{font-family:'Fraunces',serif;font-size:clamp(8rem,20vw,18rem);font-weight:900;line-height:.85;flex-shrink:0}
+.stat-right{flex:1}.stat-title{font-size:clamp(1.8rem,4vw,3.5rem)}
+.forest-num{position:absolute;font-family:'Fraunces',serif;font-size:clamp(15rem,35vw,32rem);font-weight:900;left:-.05em;bottom:-.1em;line-height:.8;user-select:none;z-index:1}
+.forest-title{font-size:clamp(2rem,5vw,4.5rem)}
+.manifesto-inner{position:relative}
+.manifesto-accent{width:80px;height:6px;margin-bottom:3rem}
+.manifesto-title{font-size:clamp(2.5rem,7vw,6rem);text-transform:uppercase;letter-spacing:-.01em}
+.manifesto-num{position:absolute;top:50%;right:-.05em;transform:translateY(-50%);font-family:'Fraunces',serif;font-size:clamp(12rem,30vw,28rem);font-weight:900;line-height:.8;user-select:none;z-index:0;pointer-events:none}
+.manifesto-inner>*:not(.manifesto-num){position:relative;z-index:2}
+.purple-inner{position:relative}
+.purple-pill{display:inline-block;font-size:.65rem;font-weight:900;letter-spacing:.2em;padding:.3em 1em;border-radius:999px;text-transform:uppercase;margin-bottom:1.5rem}
+.purple-title{font-size:clamp(2rem,5vw,4.5rem)}
+.purple-num{position:absolute;right:-.05em;bottom:-.1em;font-family:'Fraunces',serif;font-size:clamp(14rem,32vw,30rem);font-weight:900;line-height:.8;user-select:none}
+.finale-inner{position:relative}
+.finale-bar{width:100%;height:8px;position:absolute;top:0;left:0}
+.finale-title{font-size:clamp(2rem,5.5vw,5rem);color:#1a0000}
+.finale-close{font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-top:3rem}
+.magazine-footer{background:#0a0a0a;border-top:1px solid #1a1a1a;padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;color:#333;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+.footer-brand{font-family:'Fraunces',serif;font-size:1.2rem;font-style:italic;color:#e8c547}
+@media(max-width:768px){.masthead{flex-direction:column;align-items:flex-start;padding:2rem}.masthead-right{text-align:left}.toc{padding:1.5rem 2rem}.toc-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr;gap:1.5rem}.stat-inner{flex-direction:column;gap:1rem}.alert-stamp{display:none}}
 </style>
 </head>
 <body>
-
-<!-- MASTHEAD -->
 <header class="masthead">
   <div class="masthead-left">
     <div class="edition-label">Morning Edition</div>
     <div class="masthead-title">The<br><em>Morning</em><br>Edition</div>
-    <div class="sources-line">Search Engine Journal &nbsp;·&nbsp; Search Engine Roundtable &nbsp;·&nbsp; Search Engine Land</div>
+    <div class="sources-line">Search Engine Journal · Search Engine Roundtable · Search Engine Land</div>
   </div>
   <div class="masthead-right">
     <div class="masthead-date">APRIL 15, 2026</div>
     <div class="masthead-weekday">Wednesday</div>
   </div>
 </header>
-
-<!-- TABLE OF CONTENTS -->
-<nav class="toc">
-  <div class="toc-label">Today's 10 Stories</div>
-  <div class="toc-grid">
-    <a class="toc-item flagged" href="#story-1"><span class="toc-n">01</span><span class="toc-text">500M AI Searches Later: How To Actually Improve AI Search Visibility and Citations</span></a><a class="toc-item " href="#story-2"><span class="toc-n">02</span><span class="toc-text">Don’t Go Chasing AI Yet: A Framework for Prioritizing SEO vs. AI Search</span></a><a class="toc-item " href="#story-3"><span class="toc-n">03</span><span class="toc-text">AI agents and agentic AI vs. traditional automation</span></a><a class="toc-item flagged" href="#story-4"><span class="toc-n">04</span><span class="toc-text">1 Year → 1,000 Links: How Digital PR Builds Authority for SEO and AI Search</span></a><a class="toc-item " href="#story-5"><span class="toc-n">05</span><span class="toc-text">“SEO Expert” Became “AI Search Expert” (Gulp.): How To Control AI Answer Accuracy</span></a><a class="toc-item " href="#story-6"><span class="toc-n">06</span><span class="toc-text">OpenAI, Meta, ByteDance Lead AI Bot Traffic In Publishing</span></a><a class="toc-item flagged" href="#story-7"><span class="toc-n">07</span><span class="toc-text">New Study Points to Holes In AI Overviews</span></a><a class="toc-item flagged" href="#story-8"><span class="toc-n">08</span><span class="toc-text">Google Search Console Testing AI Contribution Report</span></a><a class="toc-item flagged" href="#story-9"><span class="toc-n">09</span><span class="toc-text">Why topical authority isn’t enough for AI search</span></a><a class="toc-item flagged" href="#story-10"><span class="toc-n">10</span><span class="toc-text">AI Overviews tools and software for optimizing and tracking results</span></a>
-  </div>
-</nav>
-
-<!-- STORY SPREADS -->
-
-<section class="spread layout-hero" style="background:#0a0a0a;color:#f5f0e8;" id="story-1">
-  <div class="ghost-numeral" style="color:#e8c54711;">01</div>
-  <div class="spread-inner">
-    <div class="eyebrow" style="color:#e8c547;">LEAD STORY &nbsp;·&nbsp; SEJ</div>
-    <span class="flag-badge">★ APPLIES TO YOU</span>
-    <h2 class="display-title hero-title">500M AI Searches Later: How To Actually Improve AI Search Visibility and Citations</h2>
-    <a class="read-link" href="https://www.searchenginejournal.com/webinar-lp-500m-ai-searches-later-how-to-actually-improve-ai-search-visibility-and-citations/" target="_blank" style="color:#e8c547;">Read full story →</a>
-  </div>
-</section>
-<section class="spread layout-midnight" style="background:#1a1a2e;color:#e0e0ff;" id="story-2">
-  <div class="spread-inner two-col">
-    <div class="left-col">
-      <span class="big-num" style="color:#7c83f5;">02</span>
-      <span class="eyebrow" style="color:#7c83f5;">DEEP DIVE</span>
-      <span class="src-pill" style="border-color:#7c83f5;color:#7c83f5;">SEJ</span>
-    </div>
-    <div class="right-col">
-      
-      <h2 class="display-title">Don’t Go Chasing AI Yet: A Framework for Prioritizing SEO vs. AI Search</h2>
-      <a class="read-link" href="https://www.searchenginejournal.com/dont-go-chasing-ai-yet-a-framework-for-prioritizing-seo-vs-ai-search/571603/" target="_blank" style="color:#7c83f5;">Read full story →</a>
-    </div>
-  </div>
-</section>
-<section class="spread layout-alert" style="background:#c0392b;color:#fff5f5;" id="story-3">
-  <div class="alert-stamp" style="border-color:#fff;color:#fff;">STORY 03</div>
-  <div class="spread-inner">
-    <div class="eyebrow" style="color:#fffaa;">ALERT &nbsp;·&nbsp; SEL</div>
-    
-    <h2 class="display-title alert-title">AI agents and agentic AI vs. traditional automation</h2>
-    <a class="read-link" href="https://searchengineland.com/guide/ai-agents-and-agentic-ai-vs-traditional-automation" target="_blank" style="color:#fff;">Read full story →</a>
-  </div>
-</section>
-<section class="spread layout-terminal" style="background:#0d1117;color:#39ff14;" id="story-4">
-  <div class="spread-inner terminal-inner">
-    <div class="terminal-header" style="color:#39ff1488;">$ morning_edition --story 04 --source SEL</div>
-    <div class="eyebrow terminal-eye" style="color:#39ff1499;">[DATA SIGNAL]</div>
-    <span class="flag-badge">★ APPLIES TO YOU</span>
-    <h2 class="display-title terminal-title" style="color:#39ff14;">1 Year → 1,000 Links: How Digital PR Builds Authority for SEO and AI Search</h2>
-    <a class="read-link terminal-link" href="https://www.bigmarker.com/third-door-media/1-year-1-000-links-how-digital-pr-builds-authority-for-seo-and-ai-search?utm_source=sel&utm_medium=textlink&utm_bmcr_source=dmdhome&utm_term=dmdhome&utm_campaign=webinars" target="_blank" style="color:#39ff1488;">→ https://www.bigmarker.com/third-door-media/1-year-1-000-link…</a>
-  </div>
-</section>
-<section class="spread layout-academic" style="background:#f5f0e0;color:#1a1a1a;" id="story-5">
-  <div class="spread-inner academic-inner">
-    <div class="academic-top" style="color:#8b4513;">
-      <span class="roman-num">V.</span>
-      <span class="eyebrow">ANALYSIS &nbsp;·&nbsp; SEJ</span>
-    </div>
-    
-    <h2 class="display-title academic-title">
-      <span class="drop-cap" style="color:#8b4513;">“</span>SEO Expert” Became “AI Search Expert” (Gulp.): How To Control AI Answer Accuracy
-    </h2>
-    <a class="read-link" href="https://www.searchenginejournal.com/webinar-lp-seo-expert-became-ai-search-expert-gulp-how-to-control-ai-answer-accuracy/" target="_blank" style="color:#8b4513;">Read full story →</a>
-  </div>
-</section>
-<section class="spread layout-stat" style="background:#ffffff;color:#111111;" id="story-6">
-  <div class="spread-inner stat-inner">
-    <div class="stat-num" style="color:#e74c3c;">06</div>
-    <div class="stat-right">
-      <div class="eyebrow" style="color:#666;">THE NUMBER &nbsp;·&nbsp; SEJ</div>
-      
-      <h2 class="display-title stat-title">OpenAI, Meta, ByteDance Lead AI Bot Traffic In Publishing</h2>
-      <a class="read-link" href="https://www.searchenginejournal.com/openai-meta-bytedance-lead-ai-bot-traffic-in-publishing/571483/" target="_blank" style="color:#e74c3c;">Read full story →</a>
-    </div>
-  </div>
-</section>
-<section class="spread layout-forest" style="background:#2d4a22;color:#f0f7ed;" id="story-7">
-  <div class="forest-num" style="color:#a8d5a222;">07</div>
-  <div class="spread-inner">
-    <div class="eyebrow" style="color:#a8d5a2;">IN FOCUS &nbsp;·&nbsp; SER</div>
-    <span class="flag-badge">★ APPLIES TO YOU</span>
-    <h2 class="display-title forest-title">New Study Points to Holes In AI Overviews</h2>
-    <a class="read-link" href="https://www.seroundtable.com/times-reports-ai-overviews-are-inaccurate-41152.html" target="_blank" style="color:#a8d5a2;">Read full story →</a>
-  </div>
-</section>
-<section class="spread layout-manifesto" style="background:#111111;color:#ffffff;" id="story-8">
-  <div class="spread-inner manifesto-inner">
-    <div class="manifesto-accent" style="background:#ff6b35;"></div>
-    <div class="eyebrow manifesto-eye" style="color:#ff6b35;">MANIFESTO &nbsp;·&nbsp; SER</div>
-    <span class="flag-badge">★ APPLIES TO YOU</span>
-    <h2 class="display-title manifesto-title">Google Search Console Testing AI Contribution Report</h2>
-    <a class="read-link" href="https://www.seroundtable.com/google-search-console-ai-contribution-41153.html" target="_blank" style="color:#ff6b35;">Read full story →</a>
-    <div class="manifesto-num" style="color:#ff6b3522;">08</div>
-  </div>
-</section>
-<section class="spread layout-purple" style="background:#f8f4ff;color:#1a0033;" id="story-9">
-  <div class="spread-inner purple-inner">
-    <div class="purple-pill" style="background:#7b2ff7;color:#fff;">SEL</div>
-    <div class="eyebrow" style="color:#7b2ff7;">SIGNAL</div>
-    <span class="flag-badge">★ APPLIES TO YOU</span>
-    <h2 class="display-title purple-title">Why topical authority isn’t enough for AI search</h2>
-    <div class="purple-num" style="color:#7b2ff722;">09</div>
-    <a class="read-link" href="https://searchengineland.com/why-topical-authority-isnt-enough-for-ai-search-474250" target="_blank" style="color:#7b2ff7;">Read full story →</a>
-  </div>
-</section>
-<section class="spread layout-finale" style="background:#ff6b35;color:#1a0000;" id="story-10">
-  <div class="spread-inner finale-inner">
-    <div class="finale-bar" style="background:#fff;"></div>
-    <div class="eyebrow" style="color:#fffcc;">CLOSE &nbsp;·&nbsp; SEL</div>
-    <span class="flag-badge">★ APPLIES TO YOU</span>
-    <h2 class="display-title finale-title">AI Overviews tools and software for optimizing and tracking results</h2>
-    <a class="read-link" href="https://searchengineland.com/guide/ai-overviews-tools-software" target="_blank" style="color:#fff;">Read full story →</a>
-    <div class="finale-close" style="color:#fff55;">FIN — 10/10</div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<nav class="toc"><div class="toc-label">Today's 10 Stories</div><div class="toc-grid"><a class="toc-item flagged" href="#story-1"><span class="toc-n">01</span><span class="toc-text">500M AI Searches Later: How To Actually Improve AI Search Visibility and Citations</span></a><a class="toc-item " href="#story-2"><span class="toc-n">02</span><span class="toc-text">Don’t Go Chasing AI Yet: A Framework for Prioritizing SEO vs. AI Search</span></a><a class="toc-item " href="#story-3"><span class="toc-n">03</span><span class="toc-text">AI agents and agentic AI vs. traditional automation</span></a><a class="toc-item flagged" href="#story-4"><span class="toc-n">04</span><span class="toc-text">1 Year → 1,000 Links: How Digital PR Builds Authority for SEO and AI Search</span></a><a class="toc-item " href="#story-5"><span class="toc-n">05</span><span class="toc-text">“SEO Expert” Became “AI Search Expert” (Gulp.): How To Control AI Answer Accuracy</span></a><a class="toc-item " href="#story-6"><span class="toc-n">06</span><span class="toc-text">OpenAI, Meta, ByteDance Lead AI Bot Traffic In Publishing</span></a><a class="toc-item flagged" href="#story-7"><span class="toc-n">07</span><span class="toc-text">New Study Points to Holes In AI Overviews</span></a><a class="toc-item flagged" href="#story-8"><span class="toc-n">08</span><span class="toc-text">Google Search Console Testing AI Contribution Report</span></a><a class="toc-item flagged" href="#story-9"><span class="toc-n">09</span><span class="toc-text">Why topical authority isn’t enough for AI search</span></a><a class="toc-item flagged" href="#story-10"><span class="toc-n">10</span><span class="toc-text">AI Overviews tools and software for optimizing and tracking results</span></a></div></nav>
+<section class="spread layout-hero" style="background:#0a0a0a;color:#f5f0e8;" id="story-1"><div class="ghost-numeral" style="color:#e8c54711;">01</div><div class="spread-inner"><div class="eyebrow" style="color:#e8c547;">LEAD STORY · SEJ</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title hero-title">500M AI Searches Later: How To Actually Improve AI Search Visibility and Citations</h2><a class="read-link" href="https://www.searchenginejournal.com/webinar-lp-500m-ai-searches-later-how-to-actually-improve-ai-search-visibility-and-citations/" target="_blank" style="color:#e8c547;">Read full story →</a></div></section><section class="spread layout-midnight" style="background:#1a1a2e;color:#e0e0ff;" id="story-2"><div class="spread-inner two-col"><div class="left-col"><span class="big-num" style="color:#7c83f5;">02</span><span class="eyebrow" style="color:#7c83f5;">DEEP DIVE</span><span class="src-pill" style="border-color:#7c83f5;color:#7c83f5;">SEJ</span></div><div class="right-col"><h2 class="display-title">Don’t Go Chasing AI Yet: A Framework for Prioritizing SEO vs. AI Search</h2><a class="read-link" href="https://www.searchenginejournal.com/dont-go-chasing-ai-yet-a-framework-for-prioritizing-seo-vs-ai-search/571603/" target="_blank" style="color:#7c83f5;">Read full story →</a></div></div></section><section class="spread layout-alert" style="background:#c0392b;color:#fff5f5;" id="story-3"><div class="alert-stamp" style="border-color:#fff;color:#fff;">STORY 03</div><div class="spread-inner"><div class="eyebrow" style="color:#fffaa;">ALERT · SEL</div><h2 class="display-title alert-title">AI agents and agentic AI vs. traditional automation</h2><a class="read-link" href="https://searchengineland.com/guide/ai-agents-and-agentic-ai-vs-traditional-automation" target="_blank" style="color:#fff;">Read full story →</a></div></section><section class="spread layout-terminal" style="background:#0d1117;color:#39ff14;" id="story-4"><div class="spread-inner terminal-inner"><div class="terminal-header" style="color:#39ff1488;">$ morning_edition --story 04 --source SEL</div><div class="eyebrow terminal-eye" style="color:#39ff1499;">[DATA SIGNAL]</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title terminal-title" style="color:#39ff14;">1 Year → 1,000 Links: How Digital PR Builds Authority for SEO and AI Search</h2><a class="read-link terminal-link" href="https://www.bigmarker.com/third-door-media/1-year-1-000-links-how-digital-pr-builds-authority-for-seo-and-ai-search?utm_source=sel&utm_medium=textlink&utm_bmcr_source=dmdhome&utm_term=dmdhome&utm_campaign=webinars" target="_blank" style="color:#39ff1488;">https://www.bigmarker.com/third-door-media/1-year-1-000-link…</a></div></section><section class="spread layout-academic" style="background:#f5f0e0;color:#1a1a1a;" id="story-5"><div class="spread-inner academic-inner"><div class="academic-top" style="color:#8b4513;"><span class="roman-num">V.</span><span class="eyebrow">ANALYSIS · SEJ</span></div><h2 class="display-title academic-title"><span class="drop-cap" style="color:#8b4513;">“</span>SEO Expert” Became “AI Search Expert” (Gulp.): How To Control AI Answer Accuracy</h2><a class="read-link" href="https://www.searchenginejournal.com/webinar-lp-seo-expert-became-ai-search-expert-gulp-how-to-control-ai-answer-accuracy/" target="_blank" style="color:#8b4513;">Read full story →</a></div></section><section class="spread layout-stat" style="background:#ffffff;color:#111111;" id="story-6"><div class="spread-inner stat-inner"><div class="stat-num" style="color:#e74c3c;">06</div><div class="stat-right"><div class="eyebrow" style="color:#666;">THE NUMBER · SEJ</div><h2 class="display-title stat-title">OpenAI, Meta, ByteDance Lead AI Bot Traffic In Publishing</h2><a class="read-link" href="https://www.searchenginejournal.com/openai-meta-bytedance-lead-ai-bot-traffic-in-publishing/571483/" target="_blank" style="color:#e74c3c;">Read full story →</a></div></div></section><section class="spread layout-forest" style="background:#2d4a22;color:#f0f7ed;" id="story-7"><div class="forest-num" style="color:#a8d5a222;">07</div><div class="spread-inner"><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title forest-title">New Study Points to Holes In AI Overviews</h2><a class="read-link" href="https://www.seroundtable.com/times-reports-ai-overviews-are-inaccurate-41152.html" target="_blank" style="color:#a8d5a2;">Read full story →</a></div></section><section class="spread layout-manifesto" style="background:#111111;color:#ffffff;" id="story-8"><div class="spread-inner manifesto-inner"><div class="manifesto-accent" style="background:#ff6b35;"></div><div class="eyebrow manifesto-eye" style="color:#ff6b35;">MANIFESTO · SER</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title manifesto-title">Google Search Console Testing AI Contribution Report</h2><a class="read-link" href="https://www.seroundtable.com/google-search-console-ai-contribution-41153.html" target="_blank" style="color:#ff6b35;">Read full story →</a><div class="manifesto-num" style="color:#ff6b3522;">08</div></div></section><section class="spread layout-purple" style="background:#f8f4ff;color:#1a0033;" id="story-9"><div class="spread-inner purple-inner"><div class="purple-pill" style="background:#7b2ff7;color:#fff;">SEL</div><div class="eyebrow" style="color:#7b2ff7;">SIGNAL</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title purple-title">Why topical authority isn’t enough for AI search</h2><div class="purple-num" style="color:#7b2ff722;">09</div><a class="read-link" href="https://searchengineland.com/why-topical-authority-isnt-enough-for-ai-search-474250" target="_blank" style="color:#7b2ff7;">Read full story →</a></div></section><section class="spread layout-finale" style="background:#ff6b35;color:#1a0000;" id="story-10"><div class="spread-inner finale-inner"><div class="finale-bar" style="background:#fff;"></div><div class="eyebrow" style="color:#fffcc;">CLOSE · SEL</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title finale-title">AI Overviews tools and software for optimizing and tracking results</h2><a class="read-link" href="https://searchengineland.com/guide/ai-overviews-tools-software" target="_blank" style="color:#fff;">Read full story →</a><div class="finale-close" style="color:#fff55;">FIN — 10/10</div></div></section>
 <footer class="magazine-footer">
   <span class="footer-brand">Morning Edition</span>
-  <span>Issue 2026-04-15 &nbsp;·&nbsp; 10 Stories</span>
+  <span>Issue 2026-04-15 · 10 Stories</span>
   <span>HeySchema.github.io/morning-edition</span>
 </footer>
-
-</body>
-</html>
+</body></html>
