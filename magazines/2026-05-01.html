@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Morning Edition — 2026-05-01</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,900;1,9..144,300;1,9..144,700&family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#f5f0e8;overflow-x:hidden}
+.masthead{background:#0a0a0a;border-bottom:3px solid #e8c547;padding:3rem 4rem 2.5rem;display:flex;justify-content:space-between;align-items:flex-end;gap:2rem}
+.edition-label{font-size:.7rem;font-weight:700;letter-spacing:.25em;color:#e8c547;text-transform:uppercase;margin-bottom:.5rem}
+.masthead-title{font-family:'Fraunces',serif;font-size:clamp(3rem,8vw,7rem);font-weight:900;line-height:.9;color:#f5f0e8;letter-spacing:-.03em}
+.masthead-title em{font-style:italic;color:#e8c547}
+.masthead-right{text-align:right}
+.masthead-date{font-size:.75rem;letter-spacing:.15em;color:#888;text-transform:uppercase;margin-bottom:.4rem}
+.masthead-weekday{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;font-style:italic;color:#f5f0e8}
+.sources-line{font-size:.65rem;letter-spacing:.2em;color:#555;text-transform:uppercase;margin-top:.5rem}
+.toc{background:#111;border-bottom:1px solid #222;padding:2rem 4rem}
+.toc-label{font-size:.65rem;letter-spacing:.25em;color:#555;text-transform:uppercase;margin-bottom:1rem}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem}
+.toc-item{display:flex;gap:.75rem;align-items:baseline;text-decoration:none;padding:.5rem;border-radius:4px;transition:background .15s}
+.toc-item:hover{background:#1a1a1a}
+.toc-n{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#e8c547;flex-shrink:0;width:2rem}
+.toc-text{font-size:.82rem;color:#aaa;line-height:1.4}
+.toc-item.flagged .toc-text{color:#f5c842}.toc-item.flagged .toc-n{color:#f5c842}
+.spread{min-height:100vh;position:relative;overflow:hidden;padding:0;display:flex;flex-direction:column;justify-content:center}
+.spread-inner{padding:clamp(3rem,8vw,7rem) clamp(2rem,6vw,6rem);position:relative;z-index:2;max-width:1200px}
+.eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:1.2rem}
+.display-title{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-bottom:2rem;max-width:900px}
+.read-link{font-size:.85rem;font-weight:700;letter-spacing:.1em;text-decoration:none;text-transform:uppercase;border-bottom:2px solid currentColor;padding-bottom:2px;transition:opacity .2s}
+.read-link:hover{opacity:.7}
+.flag-badge{display:inline-block;background:#f5c842;color:#1a1000;font-size:.6rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;padding:.3em .8em;border-radius:3px;margin-bottom:1rem}
+.ghost-numeral{position:absolute;font-family:'Fraunces',serif;font-size:clamp(18rem,40vw,40rem);font-weight:900;line-height:.8;right:-.05em;bottom:-.1em;user-select:none;z-index:1}
+.hero-title{font-size:clamp(2.5rem,6.5vw,6rem)}
+.two-col{display:grid;grid-template-columns:200px 1fr;gap:4rem;align-items:center;max-width:1200px}
+.left-col{display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+.big-num{font-family:'Fraunces',serif;font-size:clamp(5rem,12vw,10rem);font-weight:900;line-height:1;display:block}
+.src-pill{font-size:.65rem;font-weight:700;letter-spacing:.2em;border:1.5px solid;padding:.3em .8em;border-radius:2px;text-transform:uppercase}
+.alert-stamp{position:absolute;top:3rem;right:3rem;font-size:.7rem;font-weight:900;letter-spacing:.3em;border:3px solid;padding:.5em 1em;transform:rotate(6deg);text-transform:uppercase;z-index:3}
+.alert-title{font-size:clamp(2.5rem,7vw,6.5rem);color:#fff5f5}
+.layout-terminal{font-family:'JetBrains Mono',monospace!important}
+.terminal-inner{padding-top:clamp(4rem,10vh,8rem)}
+.terminal-header{font-size:.8rem;margin-bottom:2rem;opacity:.6}
+.terminal-eye{font-family:'JetBrains Mono',monospace!important;font-size:.75rem;margin-bottom:1.5rem}
+.terminal-title{font-family:'JetBrains Mono',monospace!important;font-size:clamp(1.5rem,4vw,3.2rem);font-weight:700;letter-spacing:-.01em}
+.terminal-link{font-family:'JetBrains Mono',monospace!important;font-size:.7rem;word-break:break-all}
+.academic-inner{}
+.academic-top{display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem}
+.roman-num{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:300;font-style:italic}
+.drop-cap{float:left;font-family:'Fraunces',serif;font-size:clamp(5rem,12vw,9rem);font-weight:900;line-height:.75;margin-right:.1em;margin-top:.1em}
+.academic-title{font-size:clamp(2rem,4.5vw,4rem);line-height:1.15}
+.stat-inner{display:flex;gap:4rem;align-items:center}
+.stat-num{font-family:'Fraunces',serif;font-size:clamp(8rem,20vw,18rem);font-weight:900;line-height:.85;flex-shrink:0}
+.stat-right{flex:1}.stat-title{font-size:clamp(1.8rem,4vw,3.5rem)}
+.forest-num{position:absolute;font-family:'Fraunces',serif;font-size:clamp(15rem,35vw,32rem);font-weight:900;left:-.05em;bottom:-.1em;line-height:.8;user-select:none;z-index:1}
+.forest-title{font-size:clamp(2rem,5vw,4.5rem)}
+.manifesto-inner{position:relative}
+.manifesto-accent{width:80px;height:6px;margin-bottom:3rem}
+.manifesto-title{font-size:clamp(2.5rem,7vw,6rem);text-transform:uppercase;letter-spacing:-.01em}
+.manifesto-num{position:absolute;top:50%;right:-.05em;transform:translateY(-50%);font-family:'Fraunces',serif;font-size:clamp(12rem,30vw,28rem);font-weight:900;line-height:.8;user-select:none;z-index:0;pointer-events:none}
+.manifesto-inner>*:not(.manifesto-num){position:relative;z-index:2}
+.purple-inner{position:relative}
+.purple-pill{display:inline-block;font-size:.65rem;font-weight:900;letter-spacing:.2em;padding:.3em 1em;border-radius:999px;text-transform:uppercase;margin-bottom:1.5rem}
+.purple-title{font-size:clamp(2rem,5vw,4.5rem)}
+.purple-num{position:absolute;right:-.05em;bottom:-.1em;font-family:'Fraunces',serif;font-size:clamp(14rem,32vw,30rem);font-weight:900;line-height:.8;user-select:none}
+.finale-inner{position:relative}
+.finale-bar{width:100%;height:8px;position:absolute;top:0;left:0}
+.finale-title{font-size:clamp(2rem,5.5vw,5rem);color:#1a0000}
+.finale-close{font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-top:3rem}
+.magazine-footer{background:#0a0a0a;border-top:1px solid #1a1a1a;padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;color:#333;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+.footer-brand{font-family:'Fraunces',serif;font-size:1.2rem;font-style:italic;color:#e8c547}
+@media(max-width:768px){.masthead{flex-direction:column;align-items:flex-start;padding:2rem}.masthead-right{text-align:left}.toc{padding:1.5rem 2rem}.toc-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr;gap:1.5rem}.stat-inner{flex-direction:column;gap:1rem}.alert-stamp{display:none}}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-left">
+    <div class="edition-label">Morning Edition</div>
+    <div class="masthead-title">The<br><em>Morning</em><br>Edition</div>
+    <div class="sources-line">Search Engine Journal · Search Engine Roundtable · Search Engine Land</div>
+  </div>
+  <div class="masthead-right">
+    <div class="masthead-date">MAY 1, 2026</div>
+    <div class="masthead-weekday">Friday</div>
+  </div>
+</header>
+<nav class="toc"><div class="toc-label">Today's 10 Stories</div><div class="toc-grid"><a class="toc-item " href="#story-1"><span class="toc-n">01</span><span class="toc-text">ChatGPT vs. Perplexity vs. Gemini: Which LLMs Are Driving Real Conversions? [Expert Panel]</span></a><a class="toc-item flagged" href="#story-2"><span class="toc-n">02</span><span class="toc-text">68 Million AI Crawler Visits Show What Drives AI Search Visibility</span></a><a class="toc-item flagged" href="#story-3"><span class="toc-n">03</span><span class="toc-text">Comparison Of AI Citation Patterns Offers Strategic SEO Insights</span></a><a class="toc-item flagged" href="#story-4"><span class="toc-n">04</span><span class="toc-text">Earn AI Citations: What Your Content Needs To Look Like [A 4-Article Playbook]</span></a><a class="toc-item flagged" href="#story-5"><span class="toc-n">05</span><span class="toc-text">AEO In 2026: Which Content Formats Earn AI Citations & How to Produce More [Webinar]</span></a><a class="toc-item flagged" href="#story-6"><span class="toc-n">06</span><span class="toc-text">Google Showing More Links & Citations Within AI Mode?</span></a><a class="toc-item flagged" href="#story-7"><span class="toc-n">07</span><span class="toc-text">Google Tests Enter AI Mode Button For AI Overviews</span></a><a class="toc-item " href="#story-8"><span class="toc-n">08</span><span class="toc-text">New: AI Brief And Text Disclaimers Come To Google AI Max</span></a><a class="toc-item " href="#story-9"><span class="toc-n">09</span><span class="toc-text">OpenAI Crawl Activity Tripled Since GPT-5, Data Shows</span></a><a class="toc-item " href="#story-10"><span class="toc-n">10</span><span class="toc-text">OpenAI adds CPC ads to ChatGPT</span></a></div></nav>
+<section class="spread layout-hero" style="background:#0a0a0a;color:#f5f0e8;" id="story-1"><div class="ghost-numeral" style="color:#e8c54711;">01</div><div class="spread-inner"><div class="eyebrow" style="color:#e8c547;">LEAD STORY · SEJ</div><h2 class="display-title hero-title">ChatGPT vs. Perplexity vs. Gemini: Which LLMs Are Driving Real Conversions? [Expert Panel]</h2><a class="read-link" href="https://www.searchenginejournal.com/chatgpt-vs-perplexity-vs-gemini-which-llms-are-driving-real-conversions-expert-panel/573459/" target="_blank" style="color:#e8c547;">Read full story →</a></div></section><section class="spread layout-midnight" style="background:#1a1a2e;color:#e0e0ff;" id="story-2"><div class="spread-inner two-col"><div class="left-col"><span class="big-num" style="color:#7c83f5;">02</span><span class="eyebrow" style="color:#7c83f5;">DEEP DIVE</span><span class="src-pill" style="border-color:#7c83f5;color:#7c83f5;">SEJ</span></div><div class="right-col"><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title">68 Million AI Crawler Visits Show What Drives AI Search Visibility</h2><a class="read-link" href="https://www.searchenginejournal.com/68-million-ai-crawler-visits-show-what-drives-ai-search-visibility/572386/" target="_blank" style="color:#7c83f5;">Read full story →</a></div></div></section><section class="spread layout-alert" style="background:#c0392b;color:#fff5f5;" id="story-3"><div class="alert-stamp" style="border-color:#fff;color:#fff;">STORY 03</div><div class="spread-inner"><div class="eyebrow" style="color:#fffaa;">ALERT · SEJ</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title alert-title">Comparison Of AI Citation Patterns Offers Strategic SEO Insights</h2><a class="read-link" href="https://www.searchenginejournal.com/comparison-of-ai-citation-patterns-offers-strategic-seo-insights/573327/" target="_blank" style="color:#fff;">Read full story →</a></div></section><section class="spread layout-terminal" style="background:#0d1117;color:#39ff14;" id="story-4"><div class="spread-inner terminal-inner"><div class="terminal-header" style="color:#39ff1488;">$ morning_edition --story 04 --source SEJ</div><div class="eyebrow terminal-eye" style="color:#39ff1499;">[DATA SIGNAL]</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title terminal-title" style="color:#39ff14;">Earn AI Citations: What Your Content Needs To Look Like [A 4-Article Playbook]</h2><a class="read-link terminal-link" href="https://www.searchenginejournal.com/rundowns/earn-ai-citations-what-your-content-needs-to-look-like-a-4-article-playbook/" target="_blank" style="color:#39ff1488;">https://www.searchenginejournal.com/rundowns/earn-ai-citatio…</a></div></section><section class="spread layout-academic" style="background:#f5f0e0;color:#1a1a1a;" id="story-5"><div class="spread-inner academic-inner"><div class="academic-top" style="color:#8b4513;"><span class="roman-num">V.</span><span class="eyebrow">ANALYSIS · SEJ</span></div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title academic-title"><span class="drop-cap" style="color:#8b4513;">A</span>EO In 2026: Which Content Formats Earn AI Citations & How to Produce More [Webinar]</h2><a class="read-link" href="https://www.searchenginejournal.com/aeo-in-2026-which-content-formats-earn-ai-citations-how-to-produce-more-webinar/572870/" target="_blank" style="color:#8b4513;">Read full story →</a></div></section><section class="spread layout-stat" style="background:#ffffff;color:#111111;" id="story-6"><div class="spread-inner stat-inner"><div class="stat-num" style="color:#e74c3c;">06</div><div class="stat-right"><div class="eyebrow" style="color:#666;">THE NUMBER · SER</div><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title stat-title">Google Showing More Links & Citations Within AI Mode?</h2><a class="read-link" href="https://www.seroundtable.com/google-showing-more-links-ai-mode-41245.html" target="_blank" style="color:#e74c3c;">Read full story →</a></div></div></section><section class="spread layout-forest" style="background:#2d4a22;color:#f0f7ed;" id="story-7"><div class="forest-num" style="color:#a8d5a222;">07</div><div class="spread-inner"><span class="flag-badge">★ APPLIES TO YOU</span><h2 class="display-title forest-title">Google Tests Enter AI Mode Button For AI Overviews</h2><a class="read-link" href="https://www.seroundtable.com/google-enter-ai-mode-41239.html" target="_blank" style="color:#a8d5a2;">Read full story →</a></div></section><section class="spread layout-manifesto" style="background:#111111;color:#ffffff;" id="story-8"><div class="spread-inner manifesto-inner"><div class="manifesto-accent" style="background:#ff6b35;"></div><div class="eyebrow manifesto-eye" style="color:#ff6b35;">MANIFESTO · SEJ</div><h2 class="display-title manifesto-title">New: AI Brief And Text Disclaimers Come To Google AI Max</h2><a class="read-link" href="https://www.searchenginejournal.com/new-ai-brief-and-text-disclaimers-come-to-google-ai-max/573401/" target="_blank" style="color:#ff6b35;">Read full story →</a><div class="manifesto-num" style="color:#ff6b3522;">08</div></div></section><section class="spread layout-purple" style="background:#f8f4ff;color:#1a0033;" id="story-9"><div class="spread-inner purple-inner"><div class="purple-pill" style="background:#7b2ff7;color:#fff;">SEJ</div><div class="eyebrow" style="color:#7b2ff7;">SIGNAL</div><h2 class="display-title purple-title">OpenAI Crawl Activity Tripled Since GPT-5, Data Shows</h2><div class="purple-num" style="color:#7b2ff722;">09</div><a class="read-link" href="https://www.searchenginejournal.com/openai-crawl-activity-tripled-since-gpt-5-data-shows/573316/" target="_blank" style="color:#7b2ff7;">Read full story →</a></div></section><section class="spread layout-finale" style="background:#ff6b35;color:#1a0000;" id="story-10"><div class="spread-inner finale-inner"><div class="finale-bar" style="background:#fff;"></div><div class="eyebrow" style="color:#fffcc;">CLOSE · SEL</div><h2 class="display-title finale-title">OpenAI adds CPC ads to ChatGPT</h2><a class="read-link" href="https://searchengineland.com/openai-adds-cpc-ads-to-chatgpt-475148" target="_blank" style="color:#fff;">Read full story →</a><div class="finale-close" style="color:#fff55;">FIN — 10/10</div></div></section>
+<footer class="magazine-footer">
+  <span class="footer-brand">Morning Edition</span>
+  <span>Issue 2026-05-01 · 10 Stories</span>
+  <span>HeySchema.github.io/morning-edition</span>
+</footer>
+</body></html>
